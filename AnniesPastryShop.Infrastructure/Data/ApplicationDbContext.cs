@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Annie_sPastryShop.Data
+namespace Annie_sPastryShop.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

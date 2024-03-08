@@ -1,4 +1,4 @@
-﻿using Annie_sPastryShop.Data;
+﻿using Annie_sPastryShop.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
