@@ -5,10 +5,6 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnniesPastryShop", "Annie'sPastryShop\AnniesPastryShop.csproj", "{85E48756-F4CB-4FCE-9F8B-2549E35DFC66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnniesPastryShop.Core", "AnniesPastryShop.Core\AnniesPastryShop.Core.csproj", "{65A3EB50-F953-4704-9F9F-5655FF6FAEFE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnniesPastryShop.Infrastructure", "AnniesPastryShop.Infrastructure\AnniesPastryShop.Infrastructure.csproj", "{989DEF76-E304-4B55-88E1-21FA6F4059BB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{85E48756-F4CB-4FCE-9F8B-2549E35DFC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85E48756-F4CB-4FCE-9F8B-2549E35DFC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85E48756-F4CB-4FCE-9F8B-2549E35DFC66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{65A3EB50-F953-4704-9F9F-5655FF6FAEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{65A3EB50-F953-4704-9F9F-5655FF6FAEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{65A3EB50-F953-4704-9F9F-5655FF6FAEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{65A3EB50-F953-4704-9F9F-5655FF6FAEFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{989DEF76-E304-4B55-88E1-21FA6F4059BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{989DEF76-E304-4B55-88E1-21FA6F4059BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{989DEF76-E304-4B55-88E1-21FA6F4059BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{989DEF76-E304-4B55-88E1-21FA6F4059BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
