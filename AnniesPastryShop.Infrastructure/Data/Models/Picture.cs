@@ -16,11 +16,11 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [Url]
         public string Url { get; set; } = string.Empty;
 
-        [Comment("Associated Product")]
+        [Comment("Associated product")]
         [Required]
         public int ProductId { get; set; }
 
-        [Comment("Associated Product")]
+        [Comment("Associated product")]
         [Required]
         [ForeignKey(nameof(ProductId))]
         public Product Product { get; set; } = null!;

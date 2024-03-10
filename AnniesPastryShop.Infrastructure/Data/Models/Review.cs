@@ -30,11 +30,11 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [Required]
         public DateTime CreatedOn { get; set; }
 
-        [Comment("Associated Product")]
+        [Comment("Associated product")]
         [Required]
         public int ProductId { get; set; }
 
-        [Comment("Associated Product")]
+        [Comment("Associated product")]
         [Required]
         [ForeignKey(nameof(ProductId))]
         public Product Product { get; set; } = null!;

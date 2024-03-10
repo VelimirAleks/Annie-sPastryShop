@@ -26,6 +26,12 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const int ReviewRatingMinValue = 1;
         public const int ReviewRatingMaxValue = 5;
 
+        public const int CartItemQuantityMinValue = 1;
+        public const int CartItemQuantityMaxValue = int.MaxValue;
+
+        public const double CartItemTotalPriceMinValue = 0.01;
+        public const double CartItemTotalPriceMaxValue = double.MaxValue;
+
         public const string DateFormat = "yyyy/MM/dd H:mm";
 
         public const string RequireErrorMessage = "The field {0} is required";
