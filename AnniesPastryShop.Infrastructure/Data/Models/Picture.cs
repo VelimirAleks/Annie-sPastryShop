@@ -14,7 +14,7 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [Comment("Pictures url")]
         [Required]
         [Url]
-        public string Url { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
 
         [Comment("Associated product")]
         [Required]

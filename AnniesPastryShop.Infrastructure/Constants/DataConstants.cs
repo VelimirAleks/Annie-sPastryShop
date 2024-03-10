@@ -44,6 +44,12 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const int OrderCommentMinLength = 10;
         public const int OrderCommentMaxLength = 500;
 
+        public const int BlogTitleMinLength = 5;
+        public const int BlogTitleMaxLength = 100;
+
+        public const int BlogContentMinLength = 100;
+        public const int BlogContentMaxLength = 5000;
+
         public const string DateFormat = "yyyy/MM/dd H:mm";
 
         public const string RequireErrorMessage = "The field {0} is required";
