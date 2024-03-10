@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static AnniesPastryShop.Infrastructure.Constants.DataConstants;
 
 namespace AnniesPastryShop.Infrastructure.Data.Models
 {
@@ -18,18 +14,22 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
 
         [Comment("Product name")]
         [Required]
+        [MaxLength(ProductNameMaxLength)]
         public string Name { get; set; }=string.Empty;
 
         [Comment("Product price")]
         [Required]
+        [Range(PriceMinValue,PriceMaxValue)]
         public decimal Price { get; set; }
 
         [Comment("Product description")]
         [Required]
+        [MaxLength(ProductDescriptionMaxLength)]
         public string Description { get; set; } = string.Empty;
 
         [Comment("Product image")]
         [Required]
+        [Url]
         public string ImageUrl { get; set; } = string.Empty;
 
         [Comment("Product category")]
@@ -40,5 +40,11 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [Required]
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; } = null!;
+
+        [Comment("Collection of pictures")]
+        public ICollection<Picture> Pictures { get; set; } = new List<Picture>();
+
+        [Comment("Collection of reviews")]
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }
