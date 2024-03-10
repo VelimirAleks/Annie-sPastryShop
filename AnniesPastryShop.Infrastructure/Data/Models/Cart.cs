@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AnniesPastryShop.Infrastructure.Data.Models
 {
-    [Comment("Cart table")]
+    [Comment("Carts table")]
     public class Cart
     {
         [Key]

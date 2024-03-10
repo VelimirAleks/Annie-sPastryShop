@@ -51,6 +51,6 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
         [Comment("Collection of order details")]
-        public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }
