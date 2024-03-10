@@ -20,6 +20,13 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const int CategoryNameMinLength = 3;
         public const int CategoryNameMaxLength = 50;
 
+        public const int ReviewCommentMinLength = 10;
+        public const int ReviewCommentMaxLength = 500;
+
+        public const int ReviewRatingMinValue = 1;
+        public const int ReviewRatingMaxValue = 5;
+
+        public const string DateFormat = "yyyy/MM/dd H:mm";
 
         public const string RequireErrorMessage = "The field {0} is required";
         public const string StringLengthErrorMessage = "The field {0} must be between {2} and {1} charavters long";

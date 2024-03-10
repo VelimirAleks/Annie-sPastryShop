@@ -46,5 +46,11 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
 
         [Comment("Collection of reviews")]
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
+
+        [Comment("Collection of cart items")]
+        public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+
+        [Comment("Collection of order details")]
+        public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
     }
 }
