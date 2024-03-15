@@ -2,6 +2,7 @@
 using AnniesPastryShop.Infrastructure.Data.Models.Roles;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Annie_sPastryShop.Infrastructure.Data
 {
@@ -28,6 +29,8 @@ namespace Annie_sPastryShop.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             builder.Entity<CartItem>()
                 .HasKey(ci => new { ci.CartId, ci.ProductId });
 
