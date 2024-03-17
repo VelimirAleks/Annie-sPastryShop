@@ -8,6 +8,7 @@ namespace AnniesPastryShop.Infrastructure.Constants
 {
     public static class DataConstants
     {
+        // Data validation constants
         public const int ProductNameMinLength = 2;
         public const int ProductNameMaxLength = 50;
 
@@ -53,11 +54,17 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const int CustomerNameMinLength = 3;
         public const int CustomerNameMaxLength = 50;
 
+        // Date format
         public const string DateFormat = "yyyy/MM/dd H:mm";
 
+        // Error messages
         public const string RequireErrorMessage = "The field {0} is required";
         public const string StringLengthErrorMessage = "The field {0} must be between {2} and {1} charavters long";
         public const string UrlFormatErrorMessage = "The field {0} must be a valid URL";
         public const string RangeErrorMessage = "The field {0} must be between {1} and {2}";
+
+        // Roles
+        public const string AdministratorRoleName = "Administrator";
+        public const string ModeratorRoleName = "Moderator";
     }
 }
