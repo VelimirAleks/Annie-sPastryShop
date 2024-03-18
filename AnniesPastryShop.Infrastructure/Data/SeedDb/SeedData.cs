@@ -1,6 +1,7 @@
 ﻿using AnniesPastryShop.Infrastructure.Data.Models;
 using AnniesPastryShop.Infrastructure.Data.Models.Roles;
 using Microsoft.AspNetCore.Identity;
+using static AnniesPastryShop.Infrastructure.Constants.DataConstants;
 
 namespace AnniesPastryShop.Infrastructure.Data.SeedDb
 {
@@ -8,10 +9,13 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
     {
         public SeedData()
         {
+            SeedAdministratorRole();
+            SeedModeratorRole();
+            SeedUsers();
             SeedAdministrator();
             SeedModerator();
             SeedCustomer();
-            SeedUsers();
+            AssignRoles();
             SeedCategories();
             SeedProducts();
             SeedPaymentMethods();
@@ -26,10 +30,12 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
         public IdentityUser CustomerUser { get; set; } = null!;
 
         //Roles
+        public IdentityRole AdministratorRole { get; set; } = null!;
+        public IdentityRole ModeratorRole { get; set; } = null!;
         public Administrator Administrator { get; set; } = null!;
         public Moderator Moderator { get; set; } = null!;
         public Customer Customer { get; set; } = null!;
-
+     
         //Categories
         public Category Cakes { get; set; } = null!;
         public Category Pies { get; set; } = null!;
@@ -83,6 +89,23 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
         public Blog HolidaySpecials { get; set; } = null!;
         public Blog CakeDecoratingTips { get; set; } = null!;
         public Blog HealthyBites { get; set; } = null!;
+
+        private void AssignRoles()
+        {
+            UserManager<IdentityUser> userManager = null!;
+            userManager.AddToRoleAsync(AdministratorUser, AdministratorRoleName).Wait();
+            userManager.AddToRoleAsync(ModeratorUser, ModeratorRoleName).Wait();
+        }
+
+        private void SeedAdministratorRole()
+        {
+            AdministratorRole = new IdentityRole(AdministratorRoleName);
+        }
+
+        private void SeedModeratorRole()
+        {
+            ModeratorRole = new IdentityRole(ModeratorRoleName);
+        }
 
         private void SeedUsers()
         { 
@@ -142,7 +165,7 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
                 User = ModeratorUser,
             };
         }
-
+       
         private void SeedCategories()
         {
             Cakes = new Category

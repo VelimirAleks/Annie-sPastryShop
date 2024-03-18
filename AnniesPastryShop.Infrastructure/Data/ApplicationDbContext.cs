@@ -1,5 +1,6 @@
 ﻿using AnniesPastryShop.Infrastructure.Data.Models;
 using AnniesPastryShop.Infrastructure.Data.Models.Roles;
+using AnniesPastryShop.Infrastructure.Data.SeedDb.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
@@ -29,6 +30,18 @@ namespace Annie_sPastryShop.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new AdministratorConfiguration());
+            builder.ApplyConfiguration(new BlogConfiguration());
+            builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new CustomerConfiguration());
+            builder.ApplyConfiguration(new ModeratorConfiguration());
+            builder.ApplyConfiguration(new PaymentMethodConfiguration());
+            builder.ApplyConfiguration(new PictureConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new ReviewConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+
             base.OnModelCreating(builder);
 
             builder.Entity<CartItem>()
