@@ -23,7 +23,7 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
 
         [Comment("Blog content")]
         [Required]
-        [MaxLength(BlogTitleMaxLength)]
+        [MaxLength(BlogContentMaxLength)]
         public string Content { get; set; } = string.Empty;
 
         [Comment("Blog image URL")]

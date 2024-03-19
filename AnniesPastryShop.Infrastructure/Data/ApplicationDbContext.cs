@@ -31,6 +31,7 @@ namespace Annie_sPastryShop.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new AdministratorConfiguration());
             builder.ApplyConfiguration(new BlogConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
@@ -41,7 +42,7 @@ namespace Annie_sPastryShop.Infrastructure.Data
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new ReviewConfiguration());
             builder.ApplyConfiguration(new RoleConfiguration());
-            builder.ApplyConfiguration(new UserConfiguration());
+           
 
             base.OnModelCreating(builder);
 
