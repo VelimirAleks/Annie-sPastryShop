@@ -92,9 +92,8 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
 
         private void AssignRoles()
         {
-            UserManager<IdentityUser> userManager = null!;
-            userManager.AddToRoleAsync(AdministratorUser, AdministratorRoleName).Wait();
-            userManager.AddToRoleAsync(ModeratorUser, ModeratorRoleName).Wait();
+            UserManager.AddToRoleAsync(AdministratorUser, AdministratorRoleName).Wait();
+            UserManager.AddToRoleAsync(ModeratorUser, ModeratorRoleName).Wait();
         }
 
         private void SeedAdministratorRole()

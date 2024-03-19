@@ -1,5 +1,6 @@
 ﻿using AnniesPastryShop.Infrastructure.Data.Models;
 using AnniesPastryShop.Infrastructure.Data.Models.Roles;
+using AnniesPastryShop.Infrastructure.Data.SeedDb;
 using AnniesPastryShop.Infrastructure.Data.SeedDb.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
