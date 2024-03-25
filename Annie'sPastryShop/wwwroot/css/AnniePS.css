@@ -15,9 +15,14 @@ footer {
 
 
 body {
-    background-image: url(../img/PinkandBlack.jpg);
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    position: relative;
+    background-image: url(../img/PinkBlack27.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: inherit;
+    background-position: center;
+    background-attachment: fixed;
 }
+
 
