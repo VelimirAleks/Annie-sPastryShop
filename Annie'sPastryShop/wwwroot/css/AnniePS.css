@@ -1,0 +1,23 @@
+﻿
+header {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    position: relative;
+}
+
+
+footer {
+    background-color: #ffcccc;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    position: relative;
+}
+
+
+body {
+    background-image: url(../img/PinkandBlack.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: inherit;
+}
+
