@@ -1,4 +1,6 @@
 ﻿using Annie_sPastryShop.Infrastructure.Data;
+using AnniesPastryShop.Core.Contracts;
+using AnniesPastryShop.Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
         //configurations for the services
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddScoped<IProductService, ProductService>();
             return services;
         } 
 

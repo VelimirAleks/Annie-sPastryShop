@@ -21,4 +21,8 @@
     <ProjectReference Include="..\AnniesPastryShop.Core\AnniesPastryShop.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Product\" />
+  </ItemGroup>
+
 </Project>
