@@ -21,9 +21,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 justify-content-center">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 justify-content-center">
             <div class="container-fluid">
-                <h1 class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Annie's Pastry Shop</h1>
+                <h1 class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Annie's Pastry Shop</a>
+                </h1>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,6 +44,7 @@
             </div>
         </nav>
     </header>
+
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -79,7 +82,7 @@
                     <a href="https://www.instagram.com"><i class="fab fa-instagram fa-2x"></i></a>
                 </div>
             </div>
-            <p>&copy; @DateTime.Today.Year - Annie_sPastryShop - All rights reserved.</p>
+            <p>&copy; @DateTime.Today.Year - Annie's Pastry Shop - All rights reserved.</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
