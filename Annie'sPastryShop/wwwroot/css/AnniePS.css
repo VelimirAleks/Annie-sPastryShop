@@ -11,7 +11,10 @@ footer {
     background-color: #ffcccc;
     font-family: 'Comic Sans MS', sans-serif;
     font-style: italic;
-    position: relative;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 
@@ -25,6 +28,37 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    padding-bottom: 100px
 }
 
 
+.btn-custom-pink_grey {
+    background-color: grey;
+    border-color: #ffcccc;
+    color: #ffcccc;
+    border-width: 3px;
+    border-style: outset;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+}
+    .btn-custom-pink_grey:hover {
+        background-color: #ffcccc;
+        border-color: grey;
+        color: black;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+
+.card {
+    border:none;
+    border-radius: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+    .card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+.price {
+    margin-left: 90px; 
+}
