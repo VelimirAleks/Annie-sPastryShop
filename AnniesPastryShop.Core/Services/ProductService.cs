@@ -89,6 +89,70 @@ namespace AnniesPastryShop.Core.Services
             return products;
         }
 
+        public async Task<IEnumerable<ProductViewModel>> GetProductsOrderedAlphabeticallyAsync()
+        {
+            var products = await context.Products
+                .AsNoTracking()
+                .OrderBy(p => p.Name)
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+                })
+                .ToListAsync();
+            return products;
+        }
+
+        public async Task<IEnumerable<ProductViewModel>> GetProductsOrderedByCreationDateDescendingAsync()
+        {
+            var products = await context.Products
+                .AsNoTracking()
+                .OrderByDescending(p => p.Id)
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+                })
+                .ToListAsync();
+            return products;
+        }
+
+        public async Task<IEnumerable<ProductViewModel>> GetProductsOrderedByPriceAscendingAsync()
+        {
+            var products = await context.Products
+                .AsNoTracking()
+                .OrderBy(p => p.Price)
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+                })
+                .ToListAsync();
+            return products;
+        }
+
+        public async Task<IEnumerable<ProductViewModel>> GetProductsOrderedByPriceDescendingAsync()
+        {
+            var products =await context.Products
+                .AsNoTracking()
+                .OrderByDescending(p => p.Price)
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+                })
+                .ToListAsync();
+            return products;
+        }
+
         public async Task<IEnumerable<ProductViewModel?>> SearchProductsAsync(string searchTerm)
         {
             var products = await context.Products

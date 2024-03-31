@@ -71,3 +71,11 @@ body {
     width: 300px; 
     outline: none; 
 }
+
+.filter-letter {
+    background-color: #ffcccc;
+    color: dimgray; 
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 40px; 
+}

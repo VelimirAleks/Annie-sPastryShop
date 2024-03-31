@@ -1,4 +1,6 @@
 ﻿using AnniesPastryShop.Core.Contracts;
+using AnniesPastryShop.Core.Models.Product;
+using AnniesPastryShop.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +21,7 @@ namespace Annie_sPastryShop.Controllers
         public async Task<IActionResult> All()
         {
             var products = await productService.GetAllProductsAsync();
+
             return View(products);
         }
 
@@ -41,7 +44,38 @@ namespace Annie_sPastryShop.Controllers
         public async Task<IActionResult> Search(string searchTerm)
         {
             var products = await productService.SearchProductsAsync(searchTerm);
+
             return View("All",products);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Filter (string filterType)
+        {
+            IEnumerable<ProductViewModel> filteredProducts;
+
+            switch (filterType)
+            {
+                case "priceAscending":
+                    filteredProducts = await productService.GetProductsOrderedByPriceAscendingAsync();
+                    break;
+                case "priceDescending":
+                    filteredProducts = await productService.GetProductsOrderedByPriceDescendingAsync();
+                    break;
+                case "creationDateDescending":
+                    filteredProducts = await productService.GetProductsOrderedByCreationDateDescendingAsync();
+                    break;
+                case "alphabetical":
+                    filteredProducts = await productService.GetProductsOrderedAlphabeticallyAsync();
+                    break;
+                default:
+                    filteredProducts = await productService.GetAllProductsAsync();
+                    break;
+            }
+
+            ViewBag.SelectedFilterType = filterType;
+
+            return View("All", filteredProducts);
         }
     }
 }

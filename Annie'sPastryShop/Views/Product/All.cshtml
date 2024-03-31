@@ -2,12 +2,30 @@
 
 <h2>Products</h2>
 
-<form asp-action="Search" asp-controller="Product" method="get">
-    <div class="input-group mb-3">
-        <input type="text" class="search-bar" placeholder="Search products" name="searchTerm">
-        <button class="btn btn-custom-pink_grey" type="submit">Search</button>
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form asp-action="Search" asp-controller="Product" method="get">
+            <div class="input-group">
+                <input type="text" class="form-control search-bar" placeholder="Search products" name="searchTerm">
+                <button class="btn btn-custom-pink_grey" type="submit">Search</button>
+            </div>
+        </form>
     </div>
-</form>
+    <div class="col-md-6">
+        <form id="filterForm" asp-action="Filter" asp-controller="Product" method="get">
+            <div class="input-group">
+                <label for="filterSelect" class="input-group-text filter-letter">Filter</label>
+                <select class="form-select" id="filterSelect" name="filterType">
+                    <option value="priceAscending" selected="@((string)ViewBag.SelectedFilterType == "priceAscending")">Price: Low to High</option>
+                    <option value="priceDescending" selected="@((string)ViewBag.SelectedFilterType == "priceDescending")">Price: High to Low</option>
+                    <option value="creationDateDescending" selected="@((string)ViewBag.SelectedFilterType == "creationDateDescending")">Newest</option>
+                    <option value="alphabetical" selected="@((string)ViewBag.SelectedFilterType == "alphabetical")">Alphabetical</option>
+                </select>
+                <button class="btn btn-custom-pink_grey" type="submit">Apply Filter</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <div class="row">
     @foreach (var product in Model)
@@ -30,3 +48,11 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    <script>
+        $('#filterSelect').change(function () {
+            $('#filterForm').submit();
+        });
+    </script>
+}

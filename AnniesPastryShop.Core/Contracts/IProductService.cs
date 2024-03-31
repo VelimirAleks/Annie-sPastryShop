@@ -11,5 +11,9 @@ namespace AnniesPastryShop.Core.Contracts
         Task<IEnumerable<CategoryViewModel>> GetAllCategoriesAsync();
         Task<CategoryViewModel> GetCategoryByIdAsync(int id);
         Task<IEnumerable<ProductViewModel>> SearchProductsAsync(string searchTerm);
+        Task<IEnumerable<ProductViewModel>> GetProductsOrderedByPriceAscendingAsync();
+        Task<IEnumerable<ProductViewModel>> GetProductsOrderedByPriceDescendingAsync();
+        Task<IEnumerable<ProductViewModel>> GetProductsOrderedByCreationDateDescendingAsync();
+        Task<IEnumerable<ProductViewModel>> GetProductsOrderedAlphabeticallyAsync();
     }
 }
