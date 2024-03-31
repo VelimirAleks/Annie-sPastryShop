@@ -62,3 +62,12 @@ body {
 .button-container {
     margin-top: 40px;
 }
+
+.search-bar {
+    border: 1px solid #ced4da;
+    border-radius: 40px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    padding: 8px 12px; 
+    width: 300px; 
+    outline: none; 
+}
