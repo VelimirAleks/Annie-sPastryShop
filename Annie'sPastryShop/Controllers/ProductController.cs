@@ -21,5 +21,27 @@ namespace Annie_sPastryShop.Controllers
             var products = await productService.GetAllProductsAsync();
             return View(products);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Details(int id)
+        {
+            var product = await productService.GetProductByIdAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            //tdo: add cart
+            return View(product);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> Search(string searchTerm)
+        {
+            var products = await productService.SearchProductsAsync(searchTerm);
+            return View("All",products);
+        }
     }
 }

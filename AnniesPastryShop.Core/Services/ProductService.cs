@@ -88,5 +88,21 @@ namespace AnniesPastryShop.Core.Services
                 .ToListAsync();
             return products;
         }
+
+        public async Task<IEnumerable<ProductViewModel?>> SearchProductsAsync(string searchTerm)
+        {
+            var products = await context.Products
+                .AsNoTracking()
+                .Where(p => p.Name.Contains(searchTerm))
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+                })
+                .ToListAsync();
+            return products;
+        }
     }
 }

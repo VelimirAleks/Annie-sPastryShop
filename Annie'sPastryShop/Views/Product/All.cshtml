@@ -2,6 +2,13 @@
 
 <h2>Products</h2>
 
+<form asp-action="Search" asp-controller="Product" method="get">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search products" name="searchTerm">
+        <button class="btn btn-custom-pink_grey" type="submit">Search</button>
+    </div>
+</form>
+
 <div class="row">
     @foreach (var product in Model)
     {
@@ -9,8 +16,15 @@
             <div class="card">
                 <img src="@product.ImageUrl" class="card-img-top" alt="Product Image" style="height:370px;">
                 <div class="card-body">
-                    <h5 class="card-title">@product.Name <span class="price" style="font-size: smaller;">Price: $@product.Price</span></h5>
-                    <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-custom-pink_grey">Details</a>
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="price" style="font-size: smaller;">Price: $@product.Price</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-custom-pink_grey">Details</a>
+                        <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button type="submit" class="btn btn-custom-pink_grey">Add to Cart</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
