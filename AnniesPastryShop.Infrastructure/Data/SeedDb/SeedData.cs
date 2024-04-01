@@ -106,8 +106,10 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
             CustomerUser = new IdentityUser
             {
                 Id = "dea12856-c198-4129-b3f3-b893d8395082",
-                UserName = "customer",
+                UserName = "customer@gmail.com",
+                NormalizedUserName = "customer@gmail.com",
                 Email = "customer@gmail.com",
+                NormalizedEmail = "customer@gmail.com",
                 PhoneNumber="0885629596"
             };
             CustomerUser.PasswordHash =
@@ -116,8 +118,10 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
             AdministratorUser = new IdentityUser
             {
                 Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
-                UserName = "admin",
+                UserName = "admin@gmail.com",
+                NormalizedUserName = "admin@gmail.com",
                 Email = "admin@gmail.com",
+                NormalizedEmail = "admin@gmail.com"
             };
             AdministratorUser.PasswordHash =
                 hasher.HashPassword(AdministratorUser, "admin123");
@@ -125,8 +129,10 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
             ModeratorUser = new IdentityUser
             {
                 Id = "6d5800ce-d7435-4fc8-78d9-d6b3ac1f591z",
-                UserName = "moderator",
+                UserName = "moderator@gmail.com",
+                NormalizedUserName = "moderator@gmail.com",
                 Email = "moderator@gmail.com",
+                NormalizedEmail = "moderator@gmail.com"
             };
             ModeratorUser.PasswordHash =
                 hasher.HashPassword(ModeratorUser, "mode123");
