@@ -3,7 +3,7 @@
 <h2>Products</h2>
 
 <div class="row mb-3">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <form asp-action="Search" asp-controller="Product" method="get">
             <div class="input-group">
                 <input type="text" class="form-control search-bar" placeholder="Search products" name="searchTerm">
@@ -11,7 +11,7 @@
             </div>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <form id="filterForm" asp-action="Filter" asp-controller="Product" method="get">
             <div class="input-group">
                 <label for="filterSelect" class="input-group-text filter-letter">Filter</label>
@@ -20,6 +20,21 @@
                     <option value="priceDescending" selected="@((string)ViewBag.SelectedFilterType == "priceDescending")">Price: High to Low</option>
                     <option value="creationDateDescending" selected="@((string)ViewBag.SelectedFilterType == "creationDateDescending")">Newest</option>
                     <option value="alphabetical" selected="@((string)ViewBag.SelectedFilterType == "alphabetical")">Alphabetical</option>
+                </select>
+                <button class="btn btn-custom-pink_grey" type="submit">Apply Filter</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form id="categoryFilterForm" asp-action="FilterByCategory" asp-controller="Product" method="get">
+            <div class="input-group">
+                <label for="categoryFilterSelect" class="input-group-text filter-letter">Category</label>
+                <select class="form-select" id="categoryFilterSelect" name="categoryId" onchange="rememberCategoryName()">
+                    <option value="0">All Categories</option>
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
                 </select>
                 <button class="btn btn-custom-pink_grey" type="submit">Apply Filter</button>
             </div>
@@ -53,6 +68,32 @@
     <script>
         $('#filterSelect').change(function () {
             $('#filterForm').submit();
+        });
+
+        $('#categoryFilterSelect').change(function () {
+            $('#categoryFilterForm').submit();
+        });
+    </script>
+    <script>
+        // Function to remember the selected category name
+        document.getElementById("categoryFilterSelect").addEventListener("change", function () {
+            var selectedCategoryName = this.options[this.selectedIndex].text;
+            localStorage.setItem("selectedCategoryName", selectedCategoryName);
+        });
+
+        // Function to set the selected category name when the page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            var selectedCategoryName = localStorage.getItem("selectedCategoryName");
+            if (selectedCategoryName) {
+                var selectElement = document.getElementById("categoryFilterSelect");
+                var options = selectElement.options;
+                for (var i = 0; i < options.length; i++) {
+                    if (options[i].text === selectedCategoryName) {
+                        selectElement.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
         });
     </script>
 }

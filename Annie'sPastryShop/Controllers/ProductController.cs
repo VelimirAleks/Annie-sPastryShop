@@ -21,6 +21,9 @@ namespace Annie_sPastryShop.Controllers
         public async Task<IActionResult> All()
         {
             var products = await productService.GetAllProductsAsync();
+            var categories = await productService.GetAllCategoriesAsync();
+
+            ViewBag.Categories = categories;
 
             return View(products);
         }
@@ -45,7 +48,12 @@ namespace Annie_sPastryShop.Controllers
         {
             var products = await productService.SearchProductsAsync(searchTerm);
 
+            var categories = await productService.GetAllCategoriesAsync();
+            ViewBag.Categories = categories;
+
             return View("All",products);
+
+
         }
 
         [HttpGet]
@@ -72,8 +80,36 @@ namespace Annie_sPastryShop.Controllers
                     filteredProducts = await productService.GetAllProductsAsync();
                     break;
             }
-
+            
             ViewBag.SelectedFilterType = filterType;
+
+            var categories = await productService.GetAllCategoriesAsync();
+            ViewBag.Categories = categories;
+
+            return View("All", filteredProducts);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> FilterByCategory(int categoryId)
+        {
+            IEnumerable<ProductViewModel> filteredProducts;
+
+            if (categoryId != 0)
+            {
+                filteredProducts = await productService.GetProductsByCategoryAsync(categoryId);
+            }
+            else
+            {
+                filteredProducts = await productService.GetAllProductsAsync();
+            }
+
+            var categories = await productService.GetAllCategoriesAsync();
+            ViewBag.Categories = categories;
+
+            // Set the selected category ID and name
+            ViewBag.SelectedCategoryId = categoryId;
+            ViewBag.SelectedCategoryName = categoryId != 0 ? categories.FirstOrDefault(c => c.Id == categoryId)?.Name : "All Categories";
 
             return View("All", filteredProducts);
         }
