@@ -1,0 +1,72 @@
+﻿@model AnniesPastryShop.Core.Models.Gallery.GalleryViewModel
+
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var image in Model.Images)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <img src="@image.ImageUrl" class="card-img-top gallery-image" alt="Image">
+                        <a href="@Url.Action("Details", "Product", new { id = image.ProductId })" class="btn btn-custom-pink_grey btn-details">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-4 custom-pagination">
+            @if (Model.Pagination != null)
+            {
+                if (Model.Pagination.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link pagination-button" href="?page=@(Model.Pagination.CurrentPage - 1)">Previous</a>
+                    </li>
+                }
+
+                for (var i = 1; i <= Model.Pagination.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Pagination.CurrentPage ? "" : "pagination-button")">
+                        <a class="page-link" href="?page=@i">@i</a>
+                    </li>
+                }
+
+                if (Model.Pagination.HasNextPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link pagination-button" href="?page=@(Model.Pagination.CurrentPage + 1)">Next</a>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+</div>
+
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img id="modalImage" class="img-fluid" alt="Large Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.gallery-image').click(function () {
+                var imgSrc = $(this).attr('src');
+                $('#modalImage').attr('src', imgSrc);
+                $('#imageModal').modal('show');
+            });
+        });
+    </script>
+}

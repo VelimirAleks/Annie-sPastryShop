@@ -79,3 +79,50 @@ body {
     border: none; 
     border-radius: 40px; 
 }
+
+.cardGallery {
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    width: 300px; 
+    height: 400px; 
+    margin: 10px; 
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-button {
+    margin: 0 5px;
+    background-color: grey;
+    border-color: #ffcccc;
+    color: #ffcccc;
+    border-width: 3px;
+    border-style: outset;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+}
+
+.custom-pagination .page-link {
+    color: #ffcccc;
+    border-color: #ffcccc;
+    background-color: grey;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+}
+
+    .custom-pagination .page-link:hover {
+        background-color: #ffcccc;
+        border-color: grey;
+        color: black;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }

@@ -93,7 +93,7 @@ namespace Annie_sPastryShop.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> FilterByCategory(int categoryId)
         {
-            IEnumerable<ProductViewModel> filteredProducts;
+            IEnumerable<ProductViewModel?> filteredProducts;
 
             if (categoryId != 0)
             {
@@ -107,7 +107,6 @@ namespace Annie_sPastryShop.Controllers
             var categories = await productService.GetAllCategoriesAsync();
             ViewBag.Categories = categories;
 
-            // Set the selected category ID and name
             ViewBag.SelectedCategoryId = categoryId;
             ViewBag.SelectedCategoryName = categoryId != 0 ? categories.FirstOrDefault(c => c.Id == categoryId)?.Name : "All Categories";
 
