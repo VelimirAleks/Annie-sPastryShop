@@ -1,0 +1,18 @@
+﻿@model AnniesPastryShop.Core.Models.Customer.RegisterCustomerViewModel
+
+<head>
+    <title>Register Customer</title>
+</head>
+<body>
+    <h1>Register Customer</h1>
+
+    <div>
+        <form method="post" asp-action="RegisterCustomer">
+            <div>
+                <label for="FullName">Full Name:</label>
+                <input type="text" id="FullName" name="FullName" asp-for="FullName" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
