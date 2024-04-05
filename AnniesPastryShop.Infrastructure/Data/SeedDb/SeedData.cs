@@ -145,7 +145,6 @@ namespace AnniesPastryShop.Infrastructure.Data.SeedDb
                 Id = 1,
                 UserId = CustomerUser.Id,
                 FullName = "Velimir Aleksandrov",
-                ImageUrl = "https://www.dropbox.com/scl/fi/2ubtzb4vzkyeolsbk55n8/315091820_218444830534539_6229220902423040954_n.jpg?rlkey=vakd1rubnbe5fa13m779jgr29&dl=1"
             };
         }
 

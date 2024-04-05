@@ -27,10 +27,6 @@ namespace AnniesPastryShop.Infrastructure.Data.Models.Roles
         [MaxLength(CustomerNameMaxLength)]
         public string FullName { get; set; } = string.Empty;
 
-        [Comment("Customer image URL")]
-        [Url]
-        public string? ImageUrl { get; set; }
-
         [Comment("Collection of orders")]
         public ICollection<Order> Orders { get; set; } = new List<Order>();
 
