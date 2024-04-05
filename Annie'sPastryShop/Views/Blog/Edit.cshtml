@@ -1,0 +1,24 @@
+﻿@model BlogViewModel
+
+<h2>Edit Blog</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label for="Title">Title:</label>
+        <input type="text" id="Title" name="Title" class="form-control" value="@Model.Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Content">Content:</label>
+        <textarea id="Content" name="Content" class="form-control">@Model.Content</textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ImageUrl">Image URL:</label>
+        <input type="text" id="ImageUrl" name="ImageUrl" class="form-control" value="@Model.ImageUrl" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-custom-pink_grey">Update</button>
+</form>

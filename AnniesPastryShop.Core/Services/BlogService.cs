@@ -1,11 +1,8 @@
 ﻿using Annie_sPastryShop.Infrastructure.Data;
 using AnniesPastryShop.Core.Contracts;
 using AnniesPastryShop.Core.Models.Blog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AnniesPastryShop.Infrastructure.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnniesPastryShop.Core.Services
 {
@@ -17,29 +14,79 @@ namespace AnniesPastryShop.Core.Services
         {
             context = _context;
         }
-        public Task AddBlogAsync(BlogViewModel model)
+        public async Task AddBlogAsync(BlogViewModel model)
         {
-            throw new NotImplementedException();
+            var blog = new Blog
+            {
+                Title = model.Title,
+                Content = model.Content,
+                ImageUrl = model.ImageUrl,
+                CreatedAt = model.CreatedAt
+            };
+            context.Blogs.Add(blog);
+            await context.SaveChangesAsync();
         }
 
-        public Task DeleteBlogAsync(int id)
+        public async Task DeleteBlogAsync(int id)
         {
-            throw new NotImplementedException();
+            var blog = await context.Blogs.FindAsync(id);
+
+            if (blog == null)
+            {
+                throw new InvalidOperationException("Blog not found");
+            }
+            context.Blogs.Remove(blog);
+            await context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<BlogViewModel>> GetAllBlogsAsync()
+        public async Task<IEnumerable<BlogViewModel>> GetAllBlogsAsync()
         {
-            throw new NotImplementedException();
+            var blogs=await context.Blogs
+                .AsNoTracking()
+                .OrderByDescending(b=>b.CreatedAt)
+                .Select(b=>new BlogViewModel
+                {
+                    Id=b.Id,
+                    Title=b.Title,
+                    Content=b.Content,
+                    ImageUrl=b.ImageUrl,
+                    CreatedAt=b.CreatedAt
+                })
+                .ToListAsync();
+            return blogs;
         }
 
-        public Task<BlogViewModel> GetBlogByIdAsync(int id)
+        public async Task<BlogViewModel?> GetBlogByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var blog = await context.Blogs
+                .Where(b => b.Id == id)
+                .Select(b => new BlogViewModel
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Content = b.Content,
+                    ImageUrl = b.ImageUrl,
+                    CreatedAt = b.CreatedAt
+                })
+                .FirstOrDefaultAsync();
+            return blog;
         }
 
-        public Task UpdateBlogAsync(BlogViewModel model)
+        public async Task UpdateBlogAsync(BlogViewModel model)
         {
-            throw new NotImplementedException();
+            var blog = await context.Blogs.FindAsync(model.Id);
+
+            if (blog == null)
+            {
+                throw new InvalidOperationException("Blog not found");
+            }
+
+            blog.Title = model.Title;
+            blog.Content = model.Content;
+            blog.ImageUrl = model.ImageUrl;
+            blog.CreatedAt = model.CreatedAt;
+
+            await context.SaveChangesAsync();
         }
     }
 }

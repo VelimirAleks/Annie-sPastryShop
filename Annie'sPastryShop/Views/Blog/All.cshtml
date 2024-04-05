@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BlogViewModel>
+
+<h2>News</h2>
+
+@if (User.IsInRole(ModeratorRoleName))
+{
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <a href="@Url.Action("Create")" class="btn btn-custom-pink_grey">Create Blog</a>
+            </div>
+        </div>
+    </div>
+}
+
+@foreach (var blog in Model)
+{
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-5">
+                    <img src="@blog.ImageUrl" class="card-img" alt="Blog Image" style="max-height: 250px;">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h3 class="card-title" style="font-size: 24px;">@blog.Title</h3>
+                        <p class="card-text">@Html.Raw(blog.Content.Substring(0, Math.Min(blog.Content.Length, 60)))...</p>
+                        <p class="card-text"><small class="text-muted">Date Created: @blog.CreatedAt.Date.ToShortDateString()</small></p>
+                        <a href="@Url.Action("Details", new { id = blog.Id })" class="btn btn-custom-pink_grey">Details</a>
+                        @if (User.IsInRole(ModeratorRoleName))
+                        {
+                            <div class="btn-group" role="group" aria-label="Blog Actions">
+                                <a href="@Url.Action("Edit", new { id = blog.Id })" class="btn btn-custom-pink_grey">Edit</a>
+                                <a href="@Url.Action("Delete", new { id = blog.Id })" class="btn btn-custom-pink_grey">Delete</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

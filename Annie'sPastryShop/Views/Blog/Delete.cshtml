@@ -1,0 +1,21 @@
+﻿@model BlogViewModel
+
+<h2>Delete Blog</h2>
+
+<div>
+    <p>Are you sure you want to delete the following blog?</p>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Title:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+    </dl>
+</div>
+
+<form method="post" asp-action="ConfirmDelete">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-custom-pink_grey">Delete</button>
+    <a asp-action="All" class="btn btn-custom-pink_grey">Cancel</a>
+</form>

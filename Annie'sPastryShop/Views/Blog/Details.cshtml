@@ -1,0 +1,11 @@
+﻿@model BlogViewModel
+
+<h2>@Model.Title</h2>
+
+<div class="card custom-card">
+    <img src="@Model.ImageUrl" class="card-img-top img-fluid" alt="Blog Image" style="max-width: 300px;">
+    <div class="card-body">
+        <p class="card-text" style="font-size: 22px;">@Model.Content</p>
+        <p class="card-text"><small class="text-muted">Date Created: @Model.CreatedAt.ToShortDateString()</small></p>
+    </div>
+</div>

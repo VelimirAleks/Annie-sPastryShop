@@ -22,6 +22,6 @@ namespace AnniesPastryShop.Core.Models.Blog
         public string ImageUrl { get; set; } = string.Empty;
 
         [Required(ErrorMessage =RequireErrorMessage)]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }=DateTime.UtcNow.Date;
     }
 }
