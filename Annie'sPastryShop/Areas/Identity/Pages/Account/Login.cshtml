@@ -5,12 +5,18 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    .form-check-input:checked[type="checkbox"] {
+        background-color: darkmagenta; 
+    }
+</style>
+
+<h1 style="margin-bottom: 50px;">@ViewData["Title"]</h1> 
 <div class="row">
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2>Step into a World of Sweetness</h2> 
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -23,20 +29,18 @@
                     <label asp-for="Input.Password" class="form-label"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div>
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
-                    </div>
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        <span style="color: darkmagenta;">@Html.DisplayNameFor(m => m.Input.RememberMe)</span> 
+                    </label>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-custom-pink_grey">Log in</button>
                 </div>
                 <div>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="color: darkmagenta;">Register as a new user</a> 
                     </p>
                 </div>
             </form>
