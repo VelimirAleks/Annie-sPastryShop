@@ -52,9 +52,6 @@ namespace Annie_sPastryShop.Infrastructure.Data
             builder.Entity<OrderItem>()
                 .HasKey(oi => new { oi.OrderId, oi.ProductId });
 
-            builder.Entity<Review>()
-                .HasKey(r => new { r.ProductId, r.CustomerId });
-
             builder.Entity<Product>()
                 .Property(p => p.Price)
                 .HasPrecision(18, 2);

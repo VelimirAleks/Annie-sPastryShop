@@ -13,6 +13,12 @@ namespace AnniesPastryShop.Core.Services
         {
             context = _context;
         }
+
+        public async Task<bool> IsUserCustomerAsync(string userId)
+        {
+            return await context.Customers.AnyAsync(c => c.UserId == userId);
+        }
+
         public async Task<bool> SaveAdditionalDetailsAsync(string userId, string fullName)
         {
             var existingCustomer = await context.Customers.FirstOrDefaultAsync(c => c.UserId == userId);

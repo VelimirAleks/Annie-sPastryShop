@@ -15,6 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddScoped<IGalleryService, GalleryService>();
             services.AddScoped<IBlogService, BlogService>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IReviewService, ReviewService>();
             return services;
         } 
 

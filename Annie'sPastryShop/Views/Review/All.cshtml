@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AnniesPastryShop.Core.Models.Review.ReviewViewModel>
+
+@{
+    ViewData["Title"] = "Reviews";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No reviews available.</p>
+}
+else
+{
+    <div class="col-md-6">
+        <form id="sortForm" asp-action="Sort" asp-controller="Review" method="get">
+            <div class="input-group">
+                <label for="sortSelect" class="input-group-text filter-letter">Sort By</label>
+                <select class="form-select" id="sortSelect" name="sortType" style="width:100px;">
+                    <option value="dateAscending" selected="@((string)ViewBag.SelectedSortType == "dateAscending")">Date: Oldest to Newest</option>
+                    <option value="dateDescending" selected="@((string)ViewBag.SelectedSortType == "dateDescending")">Date: Newest to Oldest</option>
+                    <option value="ratingAscending" selected="@((string)ViewBag.SelectedSortType == "ratingAscending")">Rating: Low to High</option>
+                    <option value="ratingDescending" selected="@((string)ViewBag.SelectedSortType == "ratingDescending")">Rating: High to Low</option>
+                </select>
+                <button class="btn btn-custom-pink_grey" type="submit">Apply Sorting</button>
+            </div>
+        </form>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Rating</th>
+                <th>Comment</th>
+                <th>Customer</th>
+                <th>Created At</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Model)
+            {
+                <tr>
+                    <td>@review.ProductName</td>
+                    <td>
+                        @{
+                            int rating = review.Rating;
+                            for (int i = 1; i <= rating; i++)
+                            {
+                                <span class="fa fa-star checked" style="color: darkmagenta;"></span>
+                            }
+                        }
+                    </td>
+                    <td>@(string.IsNullOrEmpty(review.Comment) ? "No comment" : review.Comment.Substring(0, Math.Min(review.Comment.Length, 50)))...</td>
+                    <td>@review.CustomerName</td>
+                    <td>@review.CreatedAt.Date.ToShortDateString()</td>
+                    <td><a href="@Url.Action("Details", "Review", new { id = review.Id })" class="btn btn-custom-pink_grey">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
