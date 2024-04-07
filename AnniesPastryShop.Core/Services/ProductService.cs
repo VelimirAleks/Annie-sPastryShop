@@ -1,6 +1,7 @@
 ﻿using Annie_sPastryShop.Infrastructure.Data;
 using AnniesPastryShop.Core.Contracts;
 using AnniesPastryShop.Core.Models.Product;
+using AnniesPastryShop.Core.Models.Review;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnniesPastryShop.Core.Services
@@ -68,6 +69,15 @@ namespace AnniesPastryShop.Core.Services
                     Description = p.Description,
                     Price = p.Price,
                     ImageUrl = p.ImageUrl,
+                    Reviews = p.Reviews.Select(r => new ReviewViewModel
+                    {
+                        Id = r.Id,
+                        Rating = r.Rating,
+                        Comment = r.Comment,
+                        CreatedAt = r.CreatedOn,
+                        ProductName = r.Product.Name,
+                        CustomerName = r.Customer.FullName
+                    }).ToList(),
                 })
                 .FirstOrDefaultAsync();
             return product;

@@ -1,4 +1,6 @@
-﻿namespace AnniesPastryShop.Core.Models.Product
+﻿using AnniesPastryShop.Core.Models.Review;
+
+namespace AnniesPastryShop.Core.Models.Product
 {
     public class ProductViewModel
     {
@@ -8,5 +10,6 @@
         public decimal Price { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
         public CategoryViewModel Category { get; set; }=null!;
+        public IEnumerable<ReviewViewModel> Reviews { get; set; } = new List<ReviewViewModel>();
     }
 }

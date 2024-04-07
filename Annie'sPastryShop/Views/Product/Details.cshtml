@@ -17,7 +17,31 @@
                 <input type="hidden" name="productId" value="@Model.Id" />
                 <button type="submit" class="btn btn-custom-pink_grey me-2">Add to Cart</button>
             </form>
-            <a href="@Url.Action("Create", "Review", new { id = Model.Id })" class="btn btn-custom-pink_grey">Leave a Review</a>
+            <a href="@Url.Action("Create", "Review", new { id = Model.Id })" class="btn btn-custom-pink_grey mb-2">Leave a Review</a>
+            @if (Model.Reviews.Any())
+            {
+                <h5 class="mt-4">Reviews</h5>
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6 class="card-title">@review.CustomerName</h6>
+                            <div>
+                                @{
+                                    int rating = review.Rating;
+                                    for (int i = 1; i <= rating; i++)
+                                    {
+                                        <span class="fa fa-star checked" style="color: darkmagenta;"></span>
+                                    }
+                                }
+                            </div>
+                            <p class="card-text">@Html.Raw(@$"{(review.Comment.Length > 40 ? review.Comment.Substring(0, 40) + "..." : review.Comment)}")</p>
+                            <p class="card-text">@review.CreatedAt.ToShortDateString()</p>
+                            <a href="@Url.Action("Details", "Review", new { id = review.Id })" class="btn btn-sm btn-custom-pink_grey">Details</a>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
 </div>

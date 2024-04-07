@@ -9,10 +9,12 @@ namespace Annie_sPastryShop.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductService productService;
+        private readonly IReviewService reviewService;
 
-        public ProductController(IProductService _productService)
+        public ProductController(IProductService _productService, IReviewService _reviewService)
         {
             productService = _productService;
+            reviewService = _reviewService;
         }
 
 
