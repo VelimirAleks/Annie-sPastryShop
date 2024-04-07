@@ -25,6 +25,14 @@
                     <p class="card-text" style="font-size: 15px;">Customer: @Model.CustomerName</p> 
                     <p class="card-text" style="font-size: 15px;">Created At: @Model.CreatedAt.Date.ToShortDateString()</p> 
                     <a href="@Url.Action("Details", "Product", new { id = Model.ProductId })" class="btn btn-custom-pink_grey">View Product Details</a> 
+
+                    @if (User.IsInRole(AdministratorRoleName) || User.IsInRole(ModeratorRoleName))
+                    {
+                        <form asp-action="Delete" asp-controller="Review" method="post">
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-custom-pink_grey ">Delete</button>
+                        </form>
+                    }
                 </div>
             </div>
         </div>

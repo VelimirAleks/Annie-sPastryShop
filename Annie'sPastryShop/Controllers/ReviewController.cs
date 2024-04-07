@@ -2,6 +2,7 @@
 using AnniesPastryShop.Core.Models.Review;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static AnniesPastryShop.Infrastructure.Constants.DataConstants;
 
 namespace Annie_sPastryShop.Controllers
 {
@@ -84,6 +85,7 @@ namespace Annie_sPastryShop.Controllers
             {
                 return Unauthorized();
             }
+
             string userId = GetUserId();
             review.ProductId = id;
 
@@ -95,6 +97,22 @@ namespace Annie_sPastryShop.Controllers
             }
             await reviewService.CreateReviewAsync(review,userId);
             return RedirectToAction(nameof(All));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles =ModeratorRoleName + "," +AdministratorRoleName)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                await reviewService.DeleteReviewAsync(id);
+                return RedirectToAction(nameof(All));
+            }
+            catch (InvalidOperationException)
+            {
+                return NotFound();
+            }
         }
     }
 }
