@@ -62,6 +62,7 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const string StringLengthErrorMessage = "The field {0} must be between {2} and {1} charavters long";
         public const string UrlFormatErrorMessage = "The field {0} must be a valid URL";
         public const string RangeErrorMessage = "The field {0} must be between {1} and {2}";
+        public const string QuantityErrorMessage = "Quantity must be at least 1";
 
         // Roles
         public const string AdministratorRoleName = "Administrator";

@@ -44,6 +44,12 @@ namespace Annie_sPastryShop.Controllers
                 ModelState.AddModelError(string.Empty, "Failed to create customer.");
                 return View(model);
             }
+            var cartCreationResult = await customerService.CreateCartAsync(user.Id);
+            if (!cartCreationResult)
+            {
+                ModelState.AddModelError(string.Empty, "Failed to create cart.");
+                return View(model);
+            }
             return RedirectToAction("Index", "Home");
         }
     }

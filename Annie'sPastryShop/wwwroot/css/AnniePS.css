@@ -126,3 +126,29 @@ body {
         color: black;
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
     }
+
+
+.cart-icon {
+    color: #97004b;
+    margin-right: 40px;
+    position: relative;
+}
+
+
+    .cart-icon:hover {
+        color: darkmagenta;
+    }
+
+    .cart-icon:active {
+        color: darkmagenta;
+    }
+
+.cart-counter {
+    background-color: #ffcccc;
+    color: #97004b;
+    border-radius: 40%;
+    position: absolute;
+    top: 0px;
+    right: -15px;
+}
+

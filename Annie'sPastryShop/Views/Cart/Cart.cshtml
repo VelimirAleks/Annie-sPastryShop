@@ -1,0 +1,32 @@
+﻿@model CartViewModel
+
+<h1>Your Cart</h1>
+
+@if (Model.CartItems.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.ProductPrice</td>
+                    <td>@item.TotalPrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Your cart is empty.</p>
+}

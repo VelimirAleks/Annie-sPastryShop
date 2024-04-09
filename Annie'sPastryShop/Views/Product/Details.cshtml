@@ -13,10 +13,12 @@
         <h4>Price: $@Model.Price</h4>
         <p>@Model.Description</p>
         <div class="button-container">
-            <form asp-action="AddToCart" asp-controller="Cart" method="post">
+            <form id="addToCartForm" asp-action="AddToCart" asp-controller="Cart" method="post">
                 <input type="hidden" name="productId" value="@Model.Id" />
-                <button type="submit" class="btn btn-custom-pink_grey me-2">Add to Cart</button>
+                <input type="hidden" name="quantity" value="1" />
+                <button type="button" class="btn btn-custom-pink_grey" onclick="addToCart()">Add to Cart</button>
             </form>
+
             <a href="@Url.Action("Create", "Review", new { id = Model.Id })" class="btn btn-custom-pink_grey mb-2">Leave a Review</a>
             @if (Model.Reviews.Any())
             {
@@ -45,3 +47,48 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function addToCart() {
+            var form = document.getElementById('addToCartForm');
+
+            var formData = new FormData(form);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 400) {
+
+                    console.log('Product added to cart successfully');
+                    updateCartCounter(); 
+                } else {
+                    console.error('Failed to add product to cart');
+                }
+            };
+            xhr.onerror = function () {
+                console.error('Failed to send request');
+            };
+            xhr.send(formData);
+        }
+
+        function updateCartCounter() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/Cart/GetCartItemCount', true);
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 400) {
+                    var cartCounterElement = document.querySelector('.cart-counter');
+                    if (cartCounterElement) {
+                        cartCounterElement.textContent = xhr.responseText;
+                    }
+                } else {
+                    console.error('Failed to get cart item count');
+                }
+            };
+            xhr.onerror = function () {
+                console.error('Failed to send request');
+            };
+            xhr.send();
+        }
+    </script>
+}
