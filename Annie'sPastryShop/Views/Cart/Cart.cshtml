@@ -1,32 +1,60 @@
 ﻿@model CartViewModel
 
-<h1>Your Cart</h1>
+<div class="row">
+    <div class="col-12">
+        <h1>Your Cart</h1>
 
-@if (Model.CartItems.Any())
-{
-    <table>
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.CartItems)
-            {
-                <tr>
-                    <td>@item.ProductName</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.ProductPrice</td>
-                    <td>@item.TotalPrice</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Your cart is empty.</p>
-}
+        @if (Model.CartItems.Any())
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <tr>
+                            <td style="height: 75px;">
+                                <img src="@item.ProductImageUrl" alt="Product Image" class="product-img" style="max-height: 100%; max-width: 100%;" />
+                            </td>
+                            <td style="height: 75px; vertical-align: middle;">@item.ProductName</td>
+                            <td style="height: 75px; vertical-align: middle;">
+                                <form asp-controller="Cart" asp-action="UpdateCartItemQuantity" method="post">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <input type="hidden" name="cartId" value="@item.CartId" />
+                                    <input type="number" name="newQuantity" value="@item.Quantity" min="1" onchange="this.form.submit()" style="width: 50px; text-align: center;" />
+                                </form>
+                            </td>
+                            <td style="height: 75px; vertical-align: middle;">$@item.ProductPrice</td>
+                            <td style="height: 75px; vertical-align: middle;">$@item.TotalPrice</td>
+                            <td style="height: 75px; vertical-align: middle;">
+                                <form asp-controller="Cart" asp-action="RemoveFromCart" method="post">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <input type="hidden" name="cartId" value="@item.CartId" />
+                                    <button type="submit" class="btn btn-custom-pink_grey">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="text-right">
+                <h3>Total Amount</h3>
+                <h3 style="font-weight: bold;">Grand Total: $@Model.GrandTotal</h3>
+                <a asp-action="Checkout" asp-controller="Order" class="btn btn-info btn-custom-pink_grey" style="font-weight: bold;">Place Order</a>
+            </div>
+        }
+        else
+        {
+            <p>Your cart is empty.</p>
+        }
+    </div>
+</div>

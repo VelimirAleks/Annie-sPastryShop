@@ -1,4 +1,5 @@
 ﻿using AnniesPastryShop.Core.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Annie_sPastryShop.Controllers
@@ -28,6 +29,9 @@ namespace Annie_sPastryShop.Controllers
             {
                 return NotFound();
             }
+            
+            cartViewModel.GrandTotal = cartViewModel.CartItems.Sum(ci => ci.TotalPrice);
+
             return View(cartViewModel);
         }
 
@@ -53,32 +57,38 @@ namespace Annie_sPastryShop.Controllers
                 }
                 return Redirect(Request.Headers["Referer"].ToString());
             }
-            catch (Exception )
+            catch (Exception ex )
             {
-                return BadRequest();
+                return StatusCode(500, ex.Message);
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> RemoveFromCart(int cartItemId)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveFromCart(int productId)
         {
             try
             {
-                var result = await cartService.RemoveCartItemFromCartAsync(cartItemId);
+                var userId = GetUserId();
+                var cartId = await customerService.GetCartIdForCustomerAsync(userId);
+
+                var result = await cartService.RemoveCartItemFromCartAsync(productId, cartId);
                 if (!result)
                 {
                     return NotFound();
                 }
-                return RedirectToAction("Cart");
+                
+                return RedirectToAction(nameof(Cart));
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                return BadRequest();
+                return StatusCode(500, ex.Message);
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateCartItemQuantity(int cartItemId, int newQuantity)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateCartItemQuantity(int productId, int newQuantity)
         {
             if (newQuantity <= 0)
             {
@@ -86,21 +96,23 @@ namespace Annie_sPastryShop.Controllers
             }
             try
             {
-                var result = await cartService.UpdateCartItemQuantityAsync(cartItemId, newQuantity);
+                var userId = GetUserId();
+                var cartId = await customerService.GetCartIdForCustomerAsync(userId);
+                var result = await cartService.UpdateCartItemQuantityAsync(productId, cartId, newQuantity);
                 if (!result)
                 {
                     return NotFound();
                 }
-                return RedirectToAction("Cart");
+                return RedirectToAction(nameof(Cart));
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                return BadRequest();
+                return StatusCode(500, ex.Message);
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> ClearCart()
+         public async Task<IActionResult> ClearCart()
         {
             var userId = GetUserId();
             var isCustomer = await IsCustomerAsync(customerService);

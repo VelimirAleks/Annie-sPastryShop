@@ -1,6 +1,5 @@
 ﻿using AnniesPastryShop.Core.Contracts;
 using AnniesPastryShop.Core.Models.Product;
-using AnniesPastryShop.Infrastructure.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +39,6 @@ namespace Annie_sPastryShop.Controllers
             {
                 return NotFound();
             }
-            //tdo: add cart
             return View(product);
         }
 

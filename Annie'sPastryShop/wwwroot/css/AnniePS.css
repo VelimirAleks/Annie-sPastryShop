@@ -152,3 +152,36 @@ body {
     right: -15px;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ffcccc;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+td {
+    background-color: white;
+}
+
+.product-img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}

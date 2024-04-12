@@ -84,11 +84,12 @@ namespace AnniesPastryShop.Core.Services
             return cartViewModel;
         }
 
-        public async Task<bool> RemoveCartItemFromCartAsync(int cartItemId)
+        public async Task<bool> RemoveCartItemFromCartAsync(int productId, int cartId)
         {
-            var cartItem = await context.CartsItems.FindAsync(cartItemId);
+            var cartItem = await context.CartsItems
+                .FirstOrDefaultAsync(ci => ci.ProductId == productId && ci.CartId == cartId);
 
-            if(cartItem!=null)
+            if (cartItem!=null)
             {
                 context.CartsItems.Remove(cartItem);
                 await context.SaveChangesAsync();
@@ -97,10 +98,12 @@ namespace AnniesPastryShop.Core.Services
             return false;
         }
 
-        public async Task<bool> UpdateCartItemQuantityAsync(int cartItemId, int newQuantity)
+        public async Task<bool> UpdateCartItemQuantityAsync(int productId, int cartId, int newQuantity)
         {
-            var cartItem = await context.CartsItems.FindAsync(cartItemId);
-            if(cartItem!=null)
+            var cartItem = await context.CartsItems
+                .FirstOrDefaultAsync(ci => ci.ProductId == productId && ci.CartId == cartId);
+
+            if (cartItem!=null)
             {
                 cartItem.Quantity = newQuantity;
                 await context.SaveChangesAsync();

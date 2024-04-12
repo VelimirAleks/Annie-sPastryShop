@@ -70,24 +70,29 @@ namespace Annie_sPastryShop.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
             var review = new ReviewViewModel();
+            review.ProductId = id;
             return View(review);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int id,ReviewViewModel review)
+        public async Task<IActionResult> Create(ReviewViewModel review)
         {
+
+            string userId = GetUserId();
             bool isCustomer = await IsCustomerAsync(customerService);
             if (!isCustomer)
             {
                 return Unauthorized();
             }
 
-            string userId = GetUserId();
-            review.ProductId = id;
+            if (!ModelState.IsValid)
+            {
+                return View(review);
+            }
 
             var product = await productService.GetProductByIdAsync(review.ProductId);
             if (product==null)

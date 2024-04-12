@@ -33,7 +33,7 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const double CartItemTotalPriceMinValue = 0.01;
         public const double CartItemTotalPriceMaxValue = double.MaxValue;
 
-        public const int OrderItemQuantityMinValue = 1;
+        public const int OrderItemQuantityMinValue = 0;
         public const int OrderItemQuantityMaxValue = int.MaxValue;
 
         public const double OrderItemTotalPriceMinValue = 0.01;
