@@ -4,6 +4,7 @@ using Annie_sPastryShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnniesPastryShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240413105306_OrdersChanges")]
+    partial class OrdersChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1182,14 +1184,14 @@ namespace AnniesPastryShop.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eb220b39-901c-4e90-af66-1cd42ebe608f",
-                            ConcurrencyStamp = "e6a4e44c-c666-4d3a-8ba2-4f5340f627ec",
+                            Id = "7bdb6f02-4087-489c-8438-31883ff5d840",
+                            ConcurrencyStamp = "cf9e8dde-e109-4e87-b9de-bd8b89578ff3",
                             Name = "Administrator"
                         },
                         new
                         {
-                            Id = "e75a21c8-826c-46e8-8b27-e04fad8dffb3",
-                            ConcurrencyStamp = "926fa7ba-43c3-4abc-8132-bacf77b8729c",
+                            Id = "c5df78a2-d378-4cd0-b937-0e3f0375c2de",
+                            ConcurrencyStamp = "db0baea8-f38e-4467-8c37-790f13b0421d",
                             Name = "Moderator"
                         });
                 });
@@ -1288,15 +1290,15 @@ namespace AnniesPastryShop.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6d6b7cf9-5983-45d8-ba32-6d9be008a25c",
+                            ConcurrencyStamp = "c7f7c053-e3a8-4f2a-b86e-4dc39a8d0f42",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@gmail.com",
                             NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIB8YadOZ+vtkWmGN60jhmP/5b+p3DTKQFZ1BmzejIn5yljnX9Vrgo14Vh6Gh+r//Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENXBcYDkQ1bWZFQp0kGr2SGNwpqEjQ0D4oHqUawoeb8hduD3hGsUc3YoBGrF3qxOKQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd6240bc-866e-49d3-a65d-d65b7712384a",
+                            SecurityStamp = "9c9b30c7-6189-4d9d-bd38-daa29c275299",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -1304,15 +1306,15 @@ namespace AnniesPastryShop.Infrastructure.Migrations
                         {
                             Id = "6d5800ce-d7435-4fc8-78d9-d6b3ac1f591z",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "00721d3f-d71d-428b-9c76-a3c47a4a72ec",
+                            ConcurrencyStamp = "3de3baf8-607f-417a-b1f5-cb84b1f830d7",
                             Email = "moderator@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "moderator@gmail.com",
                             NormalizedUserName = "moderator@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMD7e2U2YNFSNDAPCy9WibBFmqVnZuDiqCdBh1rZvfsK7wC5ZtdL4ZsrunKLU+Ubdg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOmXvksgVnfpBhj5/tTYSswgDxPQ2wuswaFjMBY9EjYsD0t5S7+oyq6JBd/CGEoE4A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3c8fd2ab-32f1-46e7-86c1-fc47f39dec95",
+                            SecurityStamp = "7fbf8dc7-9069-400b-b1c1-b1ed23bf72aa",
                             TwoFactorEnabled = false,
                             UserName = "moderator@gmail.com"
                         },
@@ -1320,16 +1322,16 @@ namespace AnniesPastryShop.Infrastructure.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "63d40572-ab70-4823-90fb-a1da6ea7941f",
+                            ConcurrencyStamp = "7d9b9665-5853-4929-bde7-3076d559d06c",
                             Email = "customer@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "customer@gmail.com",
                             NormalizedUserName = "customer@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIDDE8peoVZZr+KAlgZTUekr1ACKAqW2srMWA3HSArH9se4hMeB7CPWHl6h1zCkO3A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBeUPmCLZFli7nGdoG3eTZpHnDc4MoUbqd1JasSLEvP8t9UnLX3G8HG1ceLt3LuqCg==",
                             PhoneNumber = "0885629596",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c4f8cec7-1eec-410a-8f23-7f0f8ab2afa0",
+                            SecurityStamp = "599f0685-c1ab-4d0b-8854-a4e0587c76b6",
                             TwoFactorEnabled = false,
                             UserName = "customer@gmail.com"
                         });

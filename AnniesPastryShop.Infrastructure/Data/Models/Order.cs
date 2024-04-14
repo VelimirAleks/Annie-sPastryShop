@@ -20,7 +20,12 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [Comment("Shipping address")]
         [Required]
         [MaxLength(OrderAddressMaxLength)]
-        public string Address { get; set; }=string.Empty;
+        public string Address { get; set; } = string.Empty;
+
+        [Comment("Phone number for contact")]
+        [Required]
+        [RegularExpression(PhoneNumberRegex)]
+        public string PhoneNumber { get; set; } = string.Empty;
 
         [Comment("Order total price")]
         [Required]
@@ -34,15 +39,6 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [MaxLength(OrderCommentMaxLength)]
         public string? Comment { get; set; }
 
-        [Comment("Associated customer")]
-        [Required]
-        public int CustomerId { get; set; }
-
-        [Comment("Associated customer")]
-        [Required]
-        [ForeignKey(nameof(CustomerId))]
-        public Customer Customer { get; set; } = null!;
-
         [Comment("Associated payment method")]
         [Required]
         public int PaymentMethodId { get; set; }
@@ -52,7 +48,14 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [ForeignKey(nameof(PaymentMethodId))]
         public PaymentMethod PaymentMethod { get; set; } = null!;
 
-        [Comment("Collection of order items")]
-        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        [Comment("Associated cart")]
+        [Required]
+        public int CartId { get; set; }
+
+        [Comment("Associated cart")]
+        [Required]
+        [ForeignKey(nameof(CartId))]
+        public Cart Cart { get; set; } = null!;
+
     }
 }

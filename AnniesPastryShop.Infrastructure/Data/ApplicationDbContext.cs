@@ -1,10 +1,8 @@
 ﻿using AnniesPastryShop.Infrastructure.Data.Models;
 using AnniesPastryShop.Infrastructure.Data.Models.Roles;
-using AnniesPastryShop.Infrastructure.Data.SeedDb;
 using AnniesPastryShop.Infrastructure.Data.SeedDb.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace Annie_sPastryShop.Infrastructure.Data
 {
@@ -20,7 +18,6 @@ namespace Annie_sPastryShop.Infrastructure.Data
         public DbSet<CartItem> CartsItems { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Order> Orders { get; set; } = null!;
-        public DbSet<OrderItem> OrdersItems { get; set; } = null!;
         public DbSet<PaymentMethod> PaymentsMethods { get; set; } = null!;
         public DbSet<Picture> Pictures { get; set; } = null!;
         public DbSet<Product> Products { get; set; } = null!;
@@ -49,19 +46,12 @@ namespace Annie_sPastryShop.Infrastructure.Data
             builder.Entity<CartItem>()
                 .HasKey(ci => new { ci.CartId, ci.ProductId });
 
-            builder.Entity<OrderItem>()
-                .HasKey(oi => new { oi.OrderId, oi.ProductId });
-
             builder.Entity<Product>()
                 .Property(p => p.Price)
                 .HasPrecision(18, 2);
 
             builder.Entity<CartItem>()
                 .Property(ci => ci.TotalPrice)
-                .HasPrecision(18, 2);
-
-            builder.Entity<OrderItem>()
-                .Property(oi => oi.TotalPrice)
                 .HasPrecision(18, 2);
 
             builder.Entity<Order>()

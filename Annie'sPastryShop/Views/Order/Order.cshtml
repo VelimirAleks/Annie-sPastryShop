@@ -1,0 +1,70 @@
+﻿@model AnniesPastryShop.Core.Models.Order.OrderViewModel
+
+<h1>Order Details</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Order" asp-action="Order" method="post">
+            <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+
+            <div class="mb-3">
+                <label class="form-label">Address:</label>
+                <textarea class="form-control" asp-for="Address" rows="3"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone Number:</label>
+                <input class="form-control" asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Payment Method:</label>
+                <select class="form-select" asp-for="PaymentMethod.Id" asp-items="@(new SelectList(Model.PaymentMethods, "Id", "Name"))">
+                    <option value="">Select Payment Method</option>
+                </select>
+                <span asp-validation-for="PaymentMethod.Id" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Comment:</label>
+                <textarea class="form-control" asp-for="Comment" rows="3"></textarea>
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+
+            <input type="text" name="CartId" value="@Model.CartId" />
+
+            <h3>Order Items</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <tr>
+                            <td>@item.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.TotalPrice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <label style="font-weight: bold">Total Price:</label>
+                    <span style="font-weight: bold">@Model.OrderItems.Sum(item => item.TotalPrice)</span>
+                </div>
+                <div class="ml-3">
+                    <button type="submit" class="btn btn-info btn-custom-pink_grey" style="font-weight: bold;">Place Order</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

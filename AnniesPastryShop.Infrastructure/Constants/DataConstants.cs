@@ -54,6 +54,7 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const int CustomerNameMinLength = 3;
         public const int CustomerNameMaxLength = 50;
 
+        public const string PhoneNumberRegex = @"^\d{10}$";
         // Date format
         public const string DateFormat = "yyyy/MM/dd H:mm";
 
@@ -63,6 +64,7 @@ namespace AnniesPastryShop.Infrastructure.Constants
         public const string UrlFormatErrorMessage = "The field {0} must be a valid URL";
         public const string RangeErrorMessage = "The field {0} must be between {1} and {2}";
         public const string QuantityErrorMessage = "Quantity must be at least 1";
+        public const string PhoneNumberErrorMessage = "Phone number must be exactly 10 digits";
 
         // Roles
         public const string AdministratorRoleName = "Administrator";
