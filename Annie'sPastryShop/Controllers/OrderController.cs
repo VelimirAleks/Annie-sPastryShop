@@ -1,6 +1,7 @@
 ﻿using AnniesPastryShop.Core.Contracts;
 using AnniesPastryShop.Core.Models.Order;
 using AnniesPastryShop.Infrastructure.Data.Models;
+using AnniesPastryShop.Infrastructure.Data.Models.Roles;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Annie_sPastryShop.Controllers
@@ -98,8 +99,11 @@ namespace Annie_sPastryShop.Controllers
                 }
                 return View(model);
             }
+            decimal grandTotalPrice = model.OrderItems.Sum(oi => oi.TotalPrice);
 
-            var orderId = await orderServices.PlaceOrderAsync(model, cartId);
+            int customerId = await customerService.GetCustomerIdByUserId(userId);
+
+            var orderId = await orderServices.PlaceOrderAsync(model, cartId, grandTotalPrice, customerId);
 
             if (orderId <= 0)
             {

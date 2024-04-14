@@ -7,6 +7,7 @@ namespace AnniesPastryShop.Core.Models.Order
     {
         public int Id { get; set; }
         public int CartId { get; set; }
+        public int CustomerId { get; set; } 
 
         [Required(ErrorMessage = RequireErrorMessage)]
         [StringLength(OrderAddressMaxLength,MinimumLength =OrderAddressMinLength,

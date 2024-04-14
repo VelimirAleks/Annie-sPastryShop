@@ -43,6 +43,12 @@ namespace AnniesPastryShop.Core.Services
             return cart?.Id ?? 0;
         }
 
+        public async Task<int> GetCustomerIdByUserId(string userId)
+        {
+            var customer = await context.Customers.FirstOrDefaultAsync(c => c.UserId == userId);
+            return customer?.Id ?? 0;
+        }
+
         public async Task<bool> IsUserCustomerAsync(string userId)
         {
             return await context.Customers.AnyAsync(c => c.UserId == userId);

@@ -57,5 +57,13 @@ namespace AnniesPastryShop.Infrastructure.Data.Models
         [ForeignKey(nameof(CartId))]
         public Cart Cart { get; set; } = null!;
 
+        [Comment("Associated customer")]
+        [Required]
+        public int CustomerId { get; set; } 
+
+        [Comment("Associated customer")]
+        [Required]
+        public Customer Customer { get; set; } = null!;
+
     }
 }

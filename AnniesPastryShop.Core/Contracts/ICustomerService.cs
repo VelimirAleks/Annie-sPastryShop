@@ -6,5 +6,6 @@
         Task<bool> IsUserCustomerAsync(string userId);
         Task <bool> CreateCartAsync(string userId);
         Task <int> GetCartIdForCustomerAsync(string userId);
+        Task <int> GetCustomerIdByUserId (string userId);
     }
 }

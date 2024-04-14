@@ -42,18 +42,19 @@ namespace AnniesPastryShop.Core.Services
             return paymentMethod;
         }
 
-        public async Task<int> PlaceOrderAsync(OrderViewModel model, int cartId)
+        public async Task<int> PlaceOrderAsync(OrderViewModel model, int cartId, decimal grandTotalPrice, int customerId)
         {
             var paymentMethod = await context.PaymentsMethods.FindAsync(model.PaymentMethod.Id);
             var order = new Order
             {
                 Address = model.Address,
-                TotalPrice = model.GrandTotalPrice,
+                TotalPrice = grandTotalPrice,
                 PhoneNumber = model.PhoneNumber,
                 OrderDate = model.OrderDate,
                 Comment = model.Comment,
                 PaymentMethod = paymentMethod,
-                CartId = cartId
+                CartId = cartId,
+                CustomerId = customerId
             };
 
             await context.Orders.AddAsync(order);
