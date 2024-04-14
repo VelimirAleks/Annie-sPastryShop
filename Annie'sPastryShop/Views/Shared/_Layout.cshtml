@@ -46,6 +46,10 @@
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
+                    @if (User.IsInRole(AdministratorRoleName))
+                    {
+                        <a class="btn btn-admin-turquoise_grey" href="/Admin/Main/Dashboard">Admin Area</a>
+                    }
                 </div>
             </div>
         </nav>

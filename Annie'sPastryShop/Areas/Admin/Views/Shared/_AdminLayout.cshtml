@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Annie_sPastryShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Annie_sPastryShop.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" />
+    <link rel="stylesheet" href="~/css/AnniePS.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/your-custom-styles.css" asp-append-version="true" />
+
+        <style>
+        .admin_body {
+            font-family: 'Comic Sans MS', sans-serif;
+            font-style: italic;
+            position: relative;
+            text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.5);
+            background-image: url(../img/75.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            padding-bottom: 100px;
+        }
+
+        .admin_header {
+            background-color: #40e0d0;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-style: italic;
+            position: relative;
+        }
+
+        .admin_footer {
+            background-color: #40e0d0;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-style: italic;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="admin_body">
+    <header class="admin_header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 justify-content-center">
+            <div class="container-fluid">
+                <h1 class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Main" asp-action="Dashboard">Administrator Area</a>
+                </h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Main" asp-action="Dashboard">Dashboard</a>
+                        </li>
+                    </ul>
+                    <partial name="_AdminLoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted mt-auto text-center admin_footer">
+        <div class="container">
+            <span class="text-black-50">Administrator Area!</span>
+            <p>&copy; @DateTime.Today.Year - Annie's Pastry Shop - All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -185,3 +185,53 @@ td {
     height: auto;
     margin-right: 10px;
 }
+
+.btn-admin-turquoise_grey {
+    background-color: grey;
+    border-color: #40e0d0;
+    color: #40e0d0;
+    border-width: 3px;
+    border-style: outset;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+}
+
+    .btn-admin-turquoise_grey:hover {
+        background-color: #40e0d0;
+        border-color: grey;
+        color: black;
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+
+admin_header {
+    background-color: #40e0d0;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    position: relative;
+}
+
+
+admin_footer {
+    background-color: #40e0d0;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+admin_body {
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+    position: relative;
+    text-shadow: 3px 2px 4px rgba(0, 0, 0, 0.5);
+    background-image: url(../img/75.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-bottom: 100px
+}
