@@ -1,0 +1,15 @@
+﻿@model GalleryAdminViewModel
+
+<form method="post">
+    <div class="form-group">
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" id="imageUrl" name="ImageUrl" class="form-control" value="@Model.ImageUrl">
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="productId">Associated Product:</label>
+        <input type="number" id="productId" name="ProductId" class="form-control" value="@Model.ProductId">
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-admin-turquoise_grey">Create</button>
+</form>

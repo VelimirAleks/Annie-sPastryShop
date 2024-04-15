@@ -1,5 +1,4 @@
 ﻿using AnniesPastryShop.Core.Models.Product;
-using AnniesPastryShop.Infrastructure.Data.Models;
 
 namespace AnniesPastryShop.Core.Contracts
 {

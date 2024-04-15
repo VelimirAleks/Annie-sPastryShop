@@ -1,0 +1,32 @@
+﻿@model IEnumerable<GalleryAdminViewModel>
+
+<a asp-action="Create" class="btn btn-admin-turquoise_grey">Create</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Associated Product</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var image in Model)
+        {
+            <tr>
+                <td><img src="@image.ImageUrl" alt="Image" style="max-width: 100px; max-height: 100px;"></td>
+                <td>@image.ProductId</td>
+                <td>
+                    <form method="post" asp-action="Delete" asp-route-id="@image.Id">
+                        <button type="submit" class="btn btn-admin-turquoise_grey">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@image.Id" class="btn btn-admin-turquoise_grey">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-admin-turquoise_grey">Create</a>
