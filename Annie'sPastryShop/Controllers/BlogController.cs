@@ -51,6 +51,7 @@ namespace Annie_sPastryShop.Controllers
 
         [HttpPost]
         [Authorize(Roles =ModeratorRoleName)]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BlogViewModel model)
         {
             if (!User.IsInRole(ModeratorRoleName))
@@ -100,6 +101,7 @@ namespace Annie_sPastryShop.Controllers
 
         [HttpPost]
         [Authorize(Roles =ModeratorRoleName)]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, BlogViewModel model)
         {
             if (!User.IsInRole(ModeratorRoleName))
@@ -154,6 +156,7 @@ namespace Annie_sPastryShop.Controllers
 
         [HttpPost]
         [Authorize(Roles = ModeratorRoleName)]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
             if (!User.IsInRole(ModeratorRoleName))
