@@ -10,4 +10,8 @@
     <ProjectReference Include="..\AnniesPastryShop.Infrastructure\AnniesPastryShop.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\AdminModels\" />
+  </ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@ using static AnniesPastryShop.Infrastructure.Constants.DataConstants;
 
 namespace Annie_sPastryShop.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(AdminArea)]
     [Authorize(Roles = AdministratorRoleName)]
     public class AdminBaseController : Controller
     {

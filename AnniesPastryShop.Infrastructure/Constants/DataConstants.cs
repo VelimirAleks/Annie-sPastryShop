@@ -69,5 +69,7 @@ namespace AnniesPastryShop.Infrastructure.Constants
         // Roles
         public const string AdministratorRoleName = "Administrator";
         public const string ModeratorRoleName = "Moderator";
+
+        public const string AdminArea = "Admin";
     }
 }
