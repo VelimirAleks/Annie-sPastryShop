@@ -1,0 +1,82 @@
+﻿@model CustomerAdminViewModel
+
+<h1>Customer Details</h1>
+
+<div>
+    <h4>Id</h4>
+    <p>@Model.Id</p>
+</div>
+<div>
+    <h4>Full Name</h4>
+    <p>@Model.FullName</p>
+</div>
+<div>
+    <h4>Total Orders</h4>
+    <p>@Model.TotalOrders</p>
+</div>
+<div>
+    <h4>Total Reviews</h4>
+    <p>@Model.TotalReviews</p>
+</div>
+
+@if (Model.Orders.Any())
+{
+    <h2>Orders</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order Id</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Order Date</th>
+                <th>Total Price</th>
+                <th>Payment Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Address</td>
+                    <td>@order.PhoneNumber</td>
+                    <td>@order.OrderDate.ToString(DateFormat)</td>
+                    <td>@order.GrandTotalPrice</td>
+                    <td>@order.PaymentType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (Model.Reviews.Any())
+{
+    <h2>Reviews</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Review Id</th>
+                <th>Rating</th>
+                <th>Comment</th>
+                <th>Created At</th>
+                <th>Product Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Model.Reviews)
+            {
+                <tr>
+                    <td>@review.Id</td>
+                    <td>@review.Rating</td>
+                    <td>@review.Comment</td>
+                    <td>@review.CreatedAt.ToString(DateFormat)</td>
+                    <td>@review.ProductName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a asp-action="All" class="btn btn-admin-turquoise_grey">Back to List</a>
+</p>
