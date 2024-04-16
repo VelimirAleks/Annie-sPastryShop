@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Products</h5>
+                <p class="card-text">Manage products in the system.</p>
+                <a href="@Url.Action("All", "Product", new { area = "Admin" })" class="btn btn-admin-turquoise_grey">View Products</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Categories</h5>
+                <p class="card-text">Manage product categories.</p>
+                <a href="@Url.Action("All", "Category", new { area = "Admin" })" class="btn btn-admin-turquoise_grey">View Categories</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Customers</h5>
+                <p class="card-text">Manage customers in the system.</p>
+                <a href="@Url.Action("All", "Customer", new { area = "Admin" })" class="btn btn-admin-turquoise_grey">View Customers</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gallery</h5>
+                <p class="card-text">Manage gallery images.</p>
+                <a href="@Url.Action("All", "Gallery", new { area = "Admin" })" class="btn btn-admin-turquoise_grey">View Gallery</a>
+            </div>
+        </div>
+    </div>
+</div>
