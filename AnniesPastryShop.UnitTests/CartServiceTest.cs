@@ -70,7 +70,7 @@ namespace AnniesPastryShop.UnitTests
         public async Task AddProductToCartAsync_ShouldAddProductToCart()
         {
             // Arrange
-            int productId = 2; // New product ID
+            int productId = 2; 
             int quantity = 1;
             string userId = "user1";
 
@@ -227,5 +227,7 @@ namespace AnniesPastryShop.UnitTests
             // Assert
             Assert.IsFalse(result);
         }
+
+
     }
 }
