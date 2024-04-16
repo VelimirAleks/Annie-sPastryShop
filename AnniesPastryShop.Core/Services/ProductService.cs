@@ -1,7 +1,10 @@
 ﻿using Annie_sPastryShop.Infrastructure.Data;
 using AnniesPastryShop.Core.Contracts;
+using AnniesPastryShop.Core.Models.AdminModels.Category;
+using AnniesPastryShop.Core.Models.AdminModels.Product;
 using AnniesPastryShop.Core.Models.Product;
 using AnniesPastryShop.Core.Models.Review;
+using AnniesPastryShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnniesPastryShop.Core.Services
@@ -13,6 +16,35 @@ namespace AnniesPastryShop.Core.Services
         public ProductService(ApplicationDbContext _context)
         {
             context =_context;
+        }
+
+        public async Task CreateProductAsync(ProductAdminViewModel model)
+        {
+            var product = new Product
+            {
+                Name = model.Name,
+                Price = model.Price,
+                Description = model.Description,
+                ImageUrl = model.ImageUrl,
+                CategoryId = model.CategoryId
+            };
+            await context.Products.AddAsync(product);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task DeleteProductAsync(int id)
+        {
+            if (id <= 0)
+            {
+                throw new InvalidOperationException("Invalid ID");
+            }
+            var product = await context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            if (product == null)
+            {
+                throw new InvalidOperationException("Product not found.");
+            }
+            context.Products.Remove(product);
+            await context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<CategoryViewModel>> GetAllCategoriesAsync()
@@ -38,6 +70,25 @@ namespace AnniesPastryShop.Core.Services
                     Name = p.Name,
                     Price = p.Price,
                     ImageUrl = p.ImageUrl,
+                })
+                .ToListAsync();
+            return products;
+        }
+
+        public async Task<IEnumerable<ProductAdminViewModel>> GetAllProductsAdminAsync()
+        {
+            var products = await context.Products
+                .AsNoTracking()
+                .Select(p => new ProductAdminViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+                    Description = p.Description,
+                    CategoryId = p.CategoryId,
+                    CategoryName = p.Category.Name
+                    
                 })
                 .ToListAsync();
             return products;
@@ -178,5 +229,53 @@ namespace AnniesPastryShop.Core.Services
                 .ToListAsync();
             return products;
         }
+
+        public async Task UpdateProductAsync(int id, ProductAdminViewModel model)
+        {
+            var product = await context.Products.FindAsync(id);
+            if (product == null)
+            {
+                throw new InvalidOperationException("Product not found.");
+            }
+            product.Name = model.Name;
+            product.Price = model.Price;
+            product.Description = model.Description;
+            product.ImageUrl = model.ImageUrl;
+            product.CategoryId = model.CategoryId;
+
+            await context.SaveChangesAsync();
+        }
+        public async Task<ProductAdminViewModel?> GetProductByIdAdminAsync(int id)
+        {
+            var product = await context.Products
+                .AsNoTracking()
+                .Where(p => p.Id == id)
+                .Select(p => new ProductAdminViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Description = p.Description,
+                    ImageUrl = p.ImageUrl,
+                    CategoryId = p.CategoryId,
+                    CategoryName = p.Category.Name
+                })
+                .FirstOrDefaultAsync();
+            return product;
+        }
+
+        public async Task<IEnumerable<CategoryAdminViewModel>> GetAllCategoriesAdminAsync()
+        {
+            var categories = await context.Categories
+                .AsNoTracking()
+                .Select(c => new CategoryAdminViewModel
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                })
+                .ToListAsync();
+            return categories;
+        }
+
     }
 }

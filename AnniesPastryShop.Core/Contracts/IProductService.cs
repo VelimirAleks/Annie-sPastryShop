@@ -1,4 +1,6 @@
-﻿using AnniesPastryShop.Core.Models.Product;
+﻿using AnniesPastryShop.Core.Models.AdminModels.Category;
+using AnniesPastryShop.Core.Models.AdminModels.Product;
+using AnniesPastryShop.Core.Models.Product;
 
 namespace AnniesPastryShop.Core.Contracts
 {
@@ -14,5 +16,13 @@ namespace AnniesPastryShop.Core.Contracts
         Task<IEnumerable<ProductViewModel>> GetProductsOrderedByPriceDescendingAsync();
         Task<IEnumerable<ProductViewModel>> GetProductsOrderedByCreationDateDescendingAsync();
         Task<IEnumerable<ProductViewModel>> GetProductsOrderedAlphabeticallyAsync();
+
+        // Admin methods
+        Task<IEnumerable<ProductAdminViewModel>> GetAllProductsAdminAsync();
+        Task<ProductAdminViewModel?> GetProductByIdAdminAsync(int id);
+        Task<IEnumerable<CategoryAdminViewModel>> GetAllCategoriesAdminAsync();
+        Task CreateProductAsync(ProductAdminViewModel model);
+        Task UpdateProductAsync(int id,ProductAdminViewModel model);
+        Task DeleteProductAsync(int id);
     }
 }

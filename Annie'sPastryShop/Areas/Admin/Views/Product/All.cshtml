@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProductAdminViewModel>
+
+<h1>Product List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-admin-turquoise_grey">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@item.ImageUrl" alt="Product Image" style="max-width: 50px; max-height: 50px;"></td>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-admin-turquoise_grey">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-admin-turquoise_grey">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-admin-turquoise_grey">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

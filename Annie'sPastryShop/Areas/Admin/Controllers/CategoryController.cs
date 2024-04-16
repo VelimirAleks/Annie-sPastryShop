@@ -33,7 +33,7 @@ namespace Annie_sPastryShop.Areas.Admin.Controllers
                 return View(model);
             }
             await categoryService.CreateCategoryAsync(model);
-            return RedirectToAction("All");
+            return RedirectToAction(nameof(All));
         }
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
@@ -46,7 +46,7 @@ namespace Annie_sPastryShop.Areas.Admin.Controllers
                 }
 
                 await categoryService.DeleteCategoryAsync(id);
-                return RedirectToAction("All");
+                return RedirectToAction(nameof(All));
             }
             catch (Exception)
             {

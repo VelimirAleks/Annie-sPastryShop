@@ -48,7 +48,7 @@ namespace Annie_sPastryShop.Areas.Admin.Controllers
                 return View(model);
             }
             await galleryService.AddImageAsync(model);
-            return RedirectToAction("All");
+            return RedirectToAction(nameof(All));
         }
 
         [HttpPost]
@@ -64,7 +64,7 @@ namespace Annie_sPastryShop.Areas.Admin.Controllers
                 }
 
                 await galleryService.DeleteImageAsync(id);
-                return RedirectToAction("All");
+                return RedirectToAction(nameof(All));
             }
             catch (Exception)
             {

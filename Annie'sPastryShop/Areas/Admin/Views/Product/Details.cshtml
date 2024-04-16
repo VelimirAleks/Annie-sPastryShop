@@ -1,0 +1,34 @@
+﻿@model ProductAdminViewModel
+
+<h1>Product Details</h1>
+
+<div>
+    <h4>Id</h4>
+    <p>@Model.Id</p>
+</div>
+<div>
+    <h4>Name</h4>
+    <p>@Model.Name</p>
+</div>
+<div>
+    <h4>Price</h4>
+    <p>@Model.Price</p>
+</div>
+<div>
+    <h4>Description</h4>
+    <p>@Model.Description</p>
+</div>
+<div>
+    <h4>Image Url</h4>
+    <p>@Model.ImageUrl</p>
+</div>
+<div>
+    <h4>Category Name</h4>
+    <p>@Model.CategoryName</p>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-admin-turquoise_grey">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-admin-turquoise_grey">Delete</a> |
+    <a asp-action="All" class="btn btn-admin-turquoise_grey">Back to List</a>
+</p>

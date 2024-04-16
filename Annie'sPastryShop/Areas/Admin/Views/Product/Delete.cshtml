@@ -1,0 +1,10 @@
+﻿@model ProductAdminViewModel
+
+<h1>Delete Product Confirmation</h1>
+
+<p>Are you sure you want to delete the product with ID: @Model.Id and Name: @Model.Name?</p>
+
+<form asp-action="DeleteConfirm" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-admin-turquoise_grey">Delete</button>
+    <a asp-action="All" class="btn btn-admin-turquoise_grey">Cancel</a>
+</form>
