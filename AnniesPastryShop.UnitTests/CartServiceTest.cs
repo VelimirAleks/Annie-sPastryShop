@@ -228,6 +228,47 @@ namespace AnniesPastryShop.UnitTests
             Assert.IsFalse(result);
         }
 
+        [Test]
+        public async Task AddProductToCartAsync_ShouldIncreaseQuantityForExistingProduct()
+        {
+            // Arrange
+            int existingProductId = product.Id;
+            int existingQuantity = 2;
+            string userId = "user1";
 
+            // Act
+            await cartService.AddProductToCartAsync(existingProductId, existingQuantity, userId);
+
+            // Assert
+            var updatedCart = await context.Carts
+                .Include(c => c.CartItems)
+                .FirstOrDefaultAsync(c => c.Customer.UserId == userId);
+
+            Assert.IsNotNull(updatedCart);
+            var updatedCartItem = updatedCart.CartItems.FirstOrDefault(ci => ci.ProductId == existingProductId);
+            Assert.IsNotNull(updatedCartItem);
+            Assert.AreEqual(existingQuantity * 2, updatedCartItem.Quantity);
+        }
+
+        [Test]
+        public async Task AddProductToCartAsync_ShouldCreateNewCartItemForNonExistentProduct()
+        {
+            // Arrange
+            int nonExistentProductId = 100;
+            int quantity = 1;
+            string userId = "user1";
+
+            // Act
+            await cartService.AddProductToCartAsync(nonExistentProductId, quantity, userId);
+
+            // Assert
+            var updatedCart = await context.Carts
+                .Include(c => c.CartItems)
+                .FirstOrDefaultAsync(c => c.Customer.UserId == userId);
+
+            Assert.IsNotNull(updatedCart);
+            Assert.AreEqual(2, updatedCart.CartItems.Count);
+            Assert.IsTrue(updatedCart.CartItems.Any(ci => ci.ProductId == nonExistentProductId && ci.Quantity == quantity));
+        }
     }
 }
