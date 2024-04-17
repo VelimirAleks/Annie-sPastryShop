@@ -3,11 +3,6 @@ using AnniesPastryShop.Core.Contracts;
 using AnniesPastryShop.Core.Services;
 using AnniesPastryShop.Infrastructure.Data.Models.Roles;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnniesPastryShop.UnitTests
 {
@@ -22,7 +17,7 @@ namespace AnniesPastryShop.UnitTests
         {
 
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "TestDb" + Guid.NewGuid().ToString())
+                .UseInMemoryDatabase(databaseName: "AnniesPastryShopInMemoryDb" + Guid.NewGuid().ToString())
                 .Options;
 
             context = new ApplicationDbContext(options);
