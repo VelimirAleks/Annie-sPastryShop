@@ -4,11 +4,6 @@ using AnniesPastryShop.Core.Models.AdminModels.Product;
 using AnniesPastryShop.Core.Services;
 using AnniesPastryShop.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnniesPastryShop.UnitTests
 {
