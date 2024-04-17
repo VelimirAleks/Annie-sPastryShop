@@ -25,15 +25,14 @@ Welcome to Annie's Pastry Shop, where sweetness meets delight! Built on ASP.NET 
 
 ## 👤 User Permissions
 
-- **Guests**: Can browse products, reviews, and the blog. Cannot leave reviews or access user-specific features.
-- **Registered Users**: Can leave reviews, manage cart and orders.
+- **Guests**: Can browse products, reviews, gallery and the blog. Cannot leave reviews or access user-specific features.
+- **Registered Users**: Same as registered guests and in addition,  can leave reviews, manage cart and orders.
 - **Moderators**: Same as registered users, with additional capabilities:
   - Managing reviews and blog posts.
 - **Administrators**: Full access to all features, including:
   - Product management.
   - Category management.
   - Gallery management.
-  - Blog management.
   - Customer statistics and administrative tasks.
 
 Happy indulging with Annie's Pastry Shop! 🎉✨
