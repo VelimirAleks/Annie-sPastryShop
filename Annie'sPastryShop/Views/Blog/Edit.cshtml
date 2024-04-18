@@ -3,6 +3,7 @@
 <h2>Edit Blog</h2>
 
 <form method="post">
+    @Html.AntiForgeryToken()
     <input type="hidden" asp-for="Id" />
 
     <div class="form-group">

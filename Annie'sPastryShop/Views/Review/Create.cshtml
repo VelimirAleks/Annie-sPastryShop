@@ -3,6 +3,7 @@
 <h2>Create Review</h2>
 
 <form asp-action="Create" asp-controller="Review" method="post">
+    @Html.AntiForgeryToken()
     <input type="hidden" name="ProductId" value="@Model.ProductId" />
 
     <div class="form-group">

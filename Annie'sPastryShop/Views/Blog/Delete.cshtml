@@ -15,6 +15,7 @@
 </div>
 
 <form method="post" asp-action="ConfirmDelete">
+    @Html.AntiForgeryToken()
     <input type="hidden" name="id" value="@Model.Id" />
     <button type="submit" class="btn btn-custom-pink_grey">Delete</button>
     <a asp-action="All" class="btn btn-custom-pink_grey">Cancel</a>

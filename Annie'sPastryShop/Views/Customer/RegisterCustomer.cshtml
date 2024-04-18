@@ -5,6 +5,7 @@
         <h1>Almost there</h1>
         <p>Please add your full name to become part of our sweet family.</p>
         <form method="post" asp-action="RegisterCustomer">
+            @Html.AntiForgeryToken()
             <div class="form-group">
                 <input type="text" id="FullName" name="FullName" asp-for="FullName" class="form-control" placeholder="Your Full Name" style="width: 350px;" required>
             </div>

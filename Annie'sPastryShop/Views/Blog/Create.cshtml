@@ -9,6 +9,7 @@
 else
 {
     <form method="post">
+        @Html.AntiForgeryToken()
         <div class="form-group">
             <label for="Title">Title:</label>
             <input type="text" id="Title" name="Title" class="form-control" value="@Model.Title" />

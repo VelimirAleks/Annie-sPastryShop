@@ -5,6 +5,7 @@
 <div class="row">
     <div class="col-md-6">
         <form asp-controller="Order" asp-action="Order" method="post">
+            @Html.AntiForgeryToken()
             <input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
 
             <div class="mb-3">

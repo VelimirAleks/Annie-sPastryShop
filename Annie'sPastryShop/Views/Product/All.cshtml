@@ -5,6 +5,7 @@
 <div class="row mb-3">
     <div class="col-md-4">
         <form asp-action="Search" asp-controller="Product" method="get">
+            @Html.AntiForgeryToken()
             <div class="input-group">
                 <input type="text" class="form-control search-bar" placeholder="Search products" name="searchTerm">
                 <button class="btn btn-custom-pink_grey" type="submit">Search</button>
@@ -13,6 +14,7 @@
     </div>
     <div class="col-md-4">
         <form id="filterForm" asp-action="Filter" asp-controller="Product" method="get">
+            @Html.AntiForgeryToken()
             <div class="input-group">
                 <label for="filterSelect" class="input-group-text filter-letter">Sort By</label>
                 <select class="form-select" id="filterSelect" name="filterType">
@@ -27,6 +29,7 @@
     </div>
     <div class="col-md-4">
         <form id="categoryFilterForm" asp-action="FilterByCategory" asp-controller="Product" method="get">
+            @Html.AntiForgeryToken()
             <div class="input-group">
                 <label for="categoryFilterSelect" class="input-group-text filter-letter">Category</label>
                 <select class="form-select" id="categoryFilterSelect" name="categoryId" onchange="rememberCategoryName()">
@@ -54,6 +57,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-custom-pink_grey">Details</a>
                         <form id="addToCartForm-@product.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
+                            @Html.AntiForgeryToken()
                             <input type="hidden" name="productId" value="@product.Id" />
                             <input type="hidden" name="quantity" value="1" />
                             <button type="button" class="btn btn-custom-pink_grey" onclick="addToCart('@product.Id')">Add to Cart</button>

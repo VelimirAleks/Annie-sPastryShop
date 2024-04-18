@@ -18,6 +18,7 @@
                 <td>@category.Name</td>
                 <td>
                     <form asp-action="Delete" asp-route-id="@category.Id" method="post">
+                        @Html.AntiForgeryToken()
                         <button type="submit" class="btn btn-admin-turquoise_grey">Delete</button>
                     </form>
                 </td>

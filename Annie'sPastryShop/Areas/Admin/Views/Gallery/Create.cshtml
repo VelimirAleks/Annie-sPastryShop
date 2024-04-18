@@ -1,6 +1,7 @@
 ﻿@model GalleryAdminViewModel
 
 <form method="post">
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <label for="imageUrl">Image URL:</label>
         <input type="text" id="imageUrl" name="ImageUrl" class="form-control" value="@Model.ImageUrl">

@@ -14,6 +14,7 @@ else
 {
     <div class="col-md-6">
         <form id="sortForm" asp-action="Sort" asp-controller="Review" method="get">
+            @Html.AntiForgeryToken()
             <div class="input-group">
                 <label for="sortSelect" class="input-group-text filter-letter">Sort By</label>
                 <select class="form-select" id="sortSelect" name="sortType" style="width:100px;">

@@ -3,6 +3,7 @@
 <h2>Create Category</h2>
 
 <form asp-action="Create">
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <label>Name</label>
         <input asp-for="Name" class="form-control" />
