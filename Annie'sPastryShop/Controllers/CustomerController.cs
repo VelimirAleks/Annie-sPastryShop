@@ -23,6 +23,7 @@ namespace Annie_sPastryShop.Controllers
         }
 
         [HttpPost]
+        [Route("Customer/RegisterCustomer")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterCustomer(RegisterCustomerViewModel model)
         {
