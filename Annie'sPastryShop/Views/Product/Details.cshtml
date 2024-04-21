@@ -10,11 +10,19 @@
         <h4>Price: $@Model.Price</h4>
         <p>@Model.Description</p>
         <div class="button-container">
-            <form id="addToCartForm" asp-action="AddToCart" asp-controller="Cart" method="post">
-                <input type="hidden" name="productId" value="@Model.Id" />
-                <input type="hidden" name="quantity" value="1" />
-                <button type="button" class="btn btn-custom-pink_grey" onclick="addToCart()">Add to Cart</button>
-            </form>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <form id="addToCartForm" asp-action="AddToCart" asp-controller="Cart" method="post">
+                    <input type="hidden" name="productId" value="@Model.Id" />
+                    <input type="hidden" name="quantity" value="1" />
+                    <button type="button" class="btn btn-custom-pink_grey" onclick="addToCart()">Add to Cart</button>
+                </form>
+            }
+            else
+            {
+                <a href="/Identity/Account/Login" class="btn btn-custom-pink_grey">Add to cart</a>
+            }
+            
 
             <a href="@Url.Action("Create", "Review", new { id = Model.Id })" class="btn btn-custom-pink_grey mb-2">Leave a Review</a>
             @if (Model.Reviews.Any())
